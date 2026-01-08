@@ -9,12 +9,12 @@ from docx import Document
 from io import BytesIO
 
 # --- CONFIGURACIÓN DE PÁGINA ---
-st.set_page_config(page_title="Music Recovery Web", layout="wide")
+st.set_page_config(page_title="Traductor de Canciones", layout="wide")
 
 # --- NUEVA FUNCIÓN CON CACHÉ (Ponla aquí, antes del bloque principal) ---
 @st.cache_resource
 def load_whisper_model(model_size):
-    """Carga el modelo una sola vez y lo guarda en memoria"""
+    """Carga el modelo una sola vez y lo guarda en memoria dinamica"""
     return whisper.load_model(model_size, device="cpu")
 
 CHORD_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
@@ -25,10 +25,10 @@ def get_chord(chroma):
     return f"{CHORD_NAMES[idx]}{suffix}"
 
 # --- INTERFAZ ---
-st.title("🎸 Music Recovery Studio (Web)")
+st.title("Recuperador de acordes y letras de canciones")
 
 st.sidebar.header("Configuración")
-modelo_seleccionado = st.sidebar.selectbox("Modelo de Whisper", ["base", "tiny", "small"], index=0)
+modelo_seleccionado = st.sidebar.selectbox("Modelo de Whisper", ["base (equilibrado)", "tiny (rapido)", "small (exacto)"], index=0)
 
 uploaded_file = st.file_uploader("Sube tu video o audio", type=["mp4", "mov", "wav", "mp3"])
 
@@ -94,7 +94,7 @@ if uploaded_file is not None:
             buffer = BytesIO()
             doc.save(buffer)
             st.download_button(
-                label="📄 Descargar Word",
+                label="📄 Descargar",
                 data=buffer.getvalue(),
                 file_name="cancionero.docx",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
