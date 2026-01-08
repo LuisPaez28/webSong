@@ -1,0 +1,6 @@
+streamlit
+librosa
+numpy
+openai-whisper
+imageio-ffmpeg
+python-docx
