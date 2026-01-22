@@ -4,3 +4,5 @@ numpy
 openai-whisper
 imageio-ffmpeg
 python-docx
+spleeter
+tensorflow
