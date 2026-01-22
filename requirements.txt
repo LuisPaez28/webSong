@@ -6,6 +6,3 @@ librosa
 openai-whisper
 imageio-ffmpeg
 python-docx
-# Spleeter es delicado, a veces requiere setuptools para instalarse
-spleeter
-setuptools
