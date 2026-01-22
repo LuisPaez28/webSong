@@ -1,8 +1,11 @@
 streamlit
+# Forzamos una versión anterior de numpy para evitar conflictos con Numba/Spleeter
+numpy<2.0.0
+# Librerías de audio
 librosa
-numpy
 openai-whisper
 imageio-ffmpeg
 python-docx
+# Spleeter es delicado, a veces requiere setuptools para instalarse
 spleeter
-tensorflow
+setuptools
